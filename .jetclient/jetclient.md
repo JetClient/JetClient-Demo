@@ -14,6 +14,9 @@ environments = ['Admin', 'Owner Admin', 'Vet Admin']
 name = 'API'
 [apis.openApi]
 file = 'openapi.yml'
+
+[settings]
+librariesPath = '.jetclient/library'
 ```
 
 #### Variables
