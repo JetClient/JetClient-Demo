@@ -40,3 +40,11 @@ file = 'openapi.yml'
   }
 }
 ```
+
+#### Init Script
+
+```js
+withJsonBody = function (body) {
+    return request => request.setBodyJson(body)
+}
+```
