@@ -1,7 +1,7 @@
 Returns the pet or a 404 error.
 
 ```toml
-name = 'Get a pet by ID'
+name = 'Get a pet by owner and ID'
 description = '/owners/{ownerId}/pets/{petId}'
 method = 'GET'
 url = '{{baseUrl}}/owners/{ownerId}/pets/{petId}'
