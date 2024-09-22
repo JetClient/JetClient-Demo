@@ -9,6 +9,11 @@ environments = ['Local']
 [[environmentGroups]]
 name = 'User'
 environments = ['Admin', 'Owner Admin', 'Vet Admin']
+
+[[apis]]
+name = 'API'
+[apis.openApi]
+file = 'openapi.yml'
 ```
 
 #### Variables
