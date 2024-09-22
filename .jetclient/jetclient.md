@@ -10,3 +10,28 @@ environments = ['Local']
 name = 'User'
 environments = ['Admin', 'Owner Admin', 'Vet Admin']
 ```
+
+#### Variables
+
+```json5
+{
+  local: {
+    baseUrl: 'http://localhost:9966/petclinic/api'
+  },
+  admin: {
+    // Typically, credentials are stored in Local variables
+    // to avoid sharing them in the source code.
+    // For the purpose of this demo, we're keeping them in Shared variables.
+    username: 'admin',
+    password: 'admin',
+  },
+  owner_admin: {
+    username: 'ownerAdmin',
+    password: 'ownerAdminPassword'
+  },
+  vet_admin: {
+    username: 'vetAdmin',
+    password: 'vetAdminPassword'
+  }
+}
+```
