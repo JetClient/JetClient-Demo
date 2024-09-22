@@ -1,7 +1,7 @@
 Returns the vet or a 404 error.
 
 ```toml
-name = 'Update a vet  by ID'
+name = 'Update a vet by ID'
 description = '/vets/{vetId}'
 method = 'PUT'
 url = '{{baseUrl}}/vets/{vetId}'
