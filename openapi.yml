@@ -26,38 +26,6 @@ tags:
   - name: specialty
     description: Endpoints related to vet specialties.
 paths:
-  /oops:
-    get:
-      tags:
-        - failing
-      operationId: failingRequest
-      summary: Always fails
-      description: Produces sample error response.
-      responses:
-        200:
-          description: Never returned.
-          headers:
-            ETag:
-              description: An ID for this version of the response.
-              schema:
-                type: string
-          content:
-            text/plain:
-              schema:
-                type: string
-        304:
-          description: Not modified.
-          headers:
-            ETag:
-              description: An ID for this version of the response.
-              schema:
-                type: string
-        400:
-          description: Bad request.
-          content:
-            application/json:
-              schema:
-                $ref: '#/components/schemas/RestError'
   /owners:
     post:
       tags:
