@@ -25,7 +25,7 @@ raw = '''
 
 ### Example
 
-Creates a user.
+Creates Owner Admin
 
 ```toml
 name = 'Owner Admin'
@@ -48,7 +48,7 @@ raw = '''
 
 ### Example
 
-Creates a user.
+Creates Vet Admin
 
 ```toml
 name = 'Vet Admin'
