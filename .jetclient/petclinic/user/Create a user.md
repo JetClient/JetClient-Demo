@@ -23,6 +23,14 @@ raw = '''
 }'''
 ```
 
+#### Post-response Script
+
+```js
+jc.test("Code is 201", () => {
+    jc.response.to.have.status(201)
+})
+```
+
 ### Example
 
 Creates Owner Admin
