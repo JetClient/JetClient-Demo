@@ -60,7 +60,7 @@ function getRandomSpecialties(specialties) {
     return _.sampleSize(specialties, count)
 }
 
-const vetPromises = jc.testSuiteVariables.get("vets").map(vet => {
+const vetPromises = jc.variables.get("vets").map(vet => {
     const randomSpecialties = getRandomSpecialties(specialties)
     const vetWithSpecialties = {
         ...vet,

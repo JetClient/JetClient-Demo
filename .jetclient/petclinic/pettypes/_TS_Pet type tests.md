@@ -8,7 +8,7 @@ id = '2b89c4aa-5568-4c5a-8d8b-823e4ee8e8d7'
 
 ```js
 function randomPetType() {
-    return _.sample(jc.testSuiteVariables.get("petTypes"))
+    return _.sample(jc.variables.get("petTypes"))
 }
 
 function withPetTypeId(id) {
@@ -29,7 +29,7 @@ jc.testCase("Lists pet types", () => {
     const listedPetTypes = response.json()
     jc.expect(listedPetTypes).to.not.be.empty
 
-    const createdPetTypes = jc.testSuiteVariables.get("petTypes")
+    const createdPetTypes = jc.variables.get("petTypes")
     jc.expect(listedPetTypes).to.have.deep.members(createdPetTypes)
 })
 

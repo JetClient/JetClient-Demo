@@ -8,7 +8,7 @@ id = 'f5b2a61b-dca8-46c4-89c1-65d5a8a92f21'
 
 ```js
 function randomSpecialty() {
-    return _.sample(jc.testSuiteVariables.get("specialties"))
+    return _.sample(jc.variables.get("specialties"))
 }
 
 function withId(id) {
@@ -29,7 +29,7 @@ jc.testCase("Lists specialties", () => {
     const listedSpecialties = response.json()
     jc.expect(listedSpecialties).to.not.be.empty
 
-    const createdSpecialties = jc.testSuiteVariables.get("specialties")
+    const createdSpecialties = jc.variables.get("specialties")
     jc.expect(listedSpecialties).to.have.deep.members(createdSpecialties)
 })
 

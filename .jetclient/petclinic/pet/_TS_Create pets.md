@@ -99,7 +99,7 @@ jc.expect(petTypes).to.not.be.empty
 const randomOwnerId = () => _.sample(owners).id
 const randomPetType = () => _.sample(petTypes)
 
-const petPromises = jc.testSuiteVariables.get("pets").map(pet => {
+const petPromises = jc.variables.get("pets").map(pet => {
     const ownerId = randomOwnerId()
     const petType = randomPetType()
     const petWithType = { ...pet, ownerId, type: petType }

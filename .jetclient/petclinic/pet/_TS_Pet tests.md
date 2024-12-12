@@ -8,7 +8,7 @@ id = 'b7bf9240-7ca3-4067-a68d-0621362a4218'
 
 ```js
 function randomPet() {
-    return _.sample(jc.testSuiteVariables.get("pets"))
+    return _.sample(jc.variables.get("pets"))
 }
 
 function withPetId(id) {

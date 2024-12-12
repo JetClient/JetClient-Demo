@@ -87,7 +87,7 @@ id = '52214264-cc5c-46ec-a30e-1e09fbc23112'
 #### Script
 
 ```js
-const ownerPromises = jc.testSuiteVariables.get("owners").map(owner =>
+const ownerPromises = jc.variables.get("owners").map(owner =>
     jc.sendRequestAsync("Adds a pet owner", withJsonBody(owner))
         .then(response => {
             response.to.have.status(201)

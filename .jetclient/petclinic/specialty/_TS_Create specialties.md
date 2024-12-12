@@ -25,7 +25,7 @@ id = '3c4cc510-9e96-4a8c-9670-af67ada4fad8'
 #### Script
 
 ```js
-const specialtyPromises = jc.testSuiteVariables.get("specialties").map(specialty =>
+const specialtyPromises = jc.variables.get("specialties").map(specialty =>
     jc.sendRequestAsync("Create a specialty", withJsonBody(specialty))
         .then(response => {
             response.to.have.status(201)

@@ -34,7 +34,7 @@ id = 'bf932e36-7d34-4602-9abd-2a1c0d6b6cb5'
 
 ```js
 jc.testCase("Create user success", () => {
-    const user = jc.testSuiteVariables.get("ownerAdminUser")
+    const user = jc.variables.get("ownerAdminUser")
 
     const response = jc.sendRequest("Create a user", withJsonBody(user))
     response.to.have.status(201)
@@ -42,7 +42,7 @@ jc.testCase("Create user success", () => {
 })
 
 jc.testCase("Create user error", () => {
-    const badUser = jc.testSuiteVariables.get("badUser")
+    const badUser = jc.variables.get("badUser")
 
     const response = jc.sendRequest("Create a user", withJsonBody(badUser))
     response.to.have.status(400)

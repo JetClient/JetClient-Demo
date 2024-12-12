@@ -46,7 +46,7 @@ function getExistingPets() {
 const pets = getExistingPets() || jc.runTestSuite('/petclinic/pet/Create pets')
 jc.expect(pets).to.not.be.empty
 
-const visitPromises = jc.testSuiteVariables.get("visits").map(visit => {
+const visitPromises = jc.variables.get("visits").map(visit => {
     const pet = _.sample(pets)
     const petId = pet.id
     const visitWithPetId = { ...visit, petId }

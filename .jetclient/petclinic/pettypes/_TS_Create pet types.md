@@ -34,7 +34,7 @@ id = 'de04852f-448a-4490-89e9-4e70f92a862b'
 #### Script
 
 ```js
-const petTypePromises = jc.testSuiteVariables.get("petTypes").map(petType =>
+const petTypePromises = jc.variables.get("petTypes").map(petType =>
     jc.sendRequestAsync("Create a pet type", withJsonBody(petType))
         .then(response => {
             response.to.have.status(201)
