@@ -8,7 +8,7 @@ id = '3c4cc510-9e96-4a8c-9670-af67ada4fad8'
 
 ```json5
 {
-  specialties: [
+  allSpecialties: [
     {
       name: "radiology",
     },
@@ -18,7 +18,8 @@ id = '3c4cc510-9e96-4a8c-9670-af67ada4fad8'
     {
       name: "dentistry",
     }
-  ]
+  ],
+  specialties: "\\{{$pickSome(allSpecialties)}}\\"
 }
 ```
 

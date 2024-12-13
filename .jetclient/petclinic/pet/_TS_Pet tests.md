@@ -8,7 +8,7 @@ id = 'b7bf9240-7ca3-4067-a68d-0621362a4218'
 
 ```js
 function randomPet() {
-    return _.sample(jc.variables.get("pets"))
+    return _.sample(jc.variables.get("petsWithIds"))
 }
 
 function withPetId(id) {
@@ -22,7 +22,7 @@ jc.testCase("Setup", () => {
     const createdPets = jc.runTestSuite('Create pets')
 
     jc.expect(createdPets).to.not.be.empty
-    jc.testSuiteVariables.set("pets", createdPets)
+    jc.testSuiteVariables.set("petsWithIds", createdPets)
 })
 
 jc.testCase("Create pet error", () => {
@@ -83,5 +83,6 @@ jc.testCase("Teardown", () => {
     jc.runTestSuite('Delete pets')
     jc.runTestSuite('/petclinic/owner/Delete owners')
     jc.runTestSuite('/petclinic/pettypes/Delete pet types')
+    jc.testSuiteVariables.clear()
 })
 ```

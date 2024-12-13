@@ -8,24 +8,11 @@ id = 'd8fd9ee2-890e-4f7e-9702-1e2dc755f30a'
 
 ```json5
 {
-  visits: [
-    {
-      "date": "2013-01-01",
-      "description": "rabies shot",
-    },
-    {
-      "date": "2013-01-02",
-      "description": "rabies shot",
-    },
-    {
-      "date": "2013-01-03",
-      "description": "neutered",
-    },
-    {
-      "date": "2013-01-04",
-      "description": "spayed",
-    }
-  ]
+  $visit: {
+    date: "{{$randomPastDate}}",
+    description: "{{$randomLoremSentence}}"
+  },
+  visits: "\\{{$repeat($visit, $randomInt(10, 20))}}\\"
 }
 ```
 

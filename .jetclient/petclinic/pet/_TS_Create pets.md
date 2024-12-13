@@ -8,60 +8,11 @@ id = '32a5595c-e2f6-4b51-ac16-2f5fd427ceb3'
 
 ```json5
 {
-  pets: [
-    {
-      name: "Leo",
-      birthDate: "2010-09-07",
-    },
-    {
-      name: "Basil",
-      birthDate: "2012-08-06",
-    },
-    {
-      name: "Rosy",
-      birthDate: "2011-04-17",
-    },
-    {
-      name: "Jewel",
-      birthDate: "2010-03-07",
-    },
-    {
-      name: "Iggy",
-      birthDate: "2010-11-30",
-    },
-    {
-      name: "George",
-      birthDate: "2010-01-20",
-    },
-    {
-      name: "Samantha",
-      birthDate: "2012-09-04",
-    },
-    {
-      name: "Max",
-      birthDate: "2012-09-04",
-    },
-    {
-      name: "Lucky",
-      birthDate: "2011-08-06",
-    },
-    {
-      name: "Mulligan",
-      birthDate: "2007-02-24",
-    },
-    {
-      name: "Freddy",
-      birthDate: "2010-03-09",
-    },
-    {
-      name: "Lucky",
-      birthDate: "2010-06-24",
-    },
-    {
-      name: "Sly",
-      birthDate: "2012-06-08",
-    }
-  ]
+  $pet: {
+    name: "{{$randomFirstName}}",
+    birthDate: "\\{{$randomBirthdate}}\\"
+  },
+  pets: "\\{{$repeat($pet, $randomInt(10, 20))}}\\"
 }
 ```
 

@@ -8,7 +8,7 @@ id = 'de04852f-448a-4490-89e9-4e70f92a862b'
 
 ```json5
 {
-  petTypes: [
+  allPetTypes: [
     {
       name: "cat",
     },
@@ -28,6 +28,8 @@ id = 'de04852f-448a-4490-89e9-4e70f92a862b'
       name: "hamster",
     },
   ],
+  petTypes: "\\{{$pickSome(allPetTypes)}}\\",
+  
 }
 ```
 

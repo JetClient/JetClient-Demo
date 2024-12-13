@@ -8,7 +8,7 @@ id = 'f5b2a61b-dca8-46c4-89c1-65d5a8a92f21'
 
 ```js
 function randomSpecialty() {
-    return _.sample(jc.variables.get("specialties"))
+    return _.sample(jc.variables.get("specialtiesWithIds"))
 }
 
 function withId(id) {
@@ -20,7 +20,7 @@ jc.testCase("Setup", () => {
     const createdSpecialties = jc.runTestSuite('Create specialties')
 
     jc.expect(createdSpecialties).to.not.be.empty
-    jc.testSuiteVariables.set("specialties", createdSpecialties)
+    jc.testSuiteVariables.set("specialtiesWithIds", createdSpecialties)
 })
 
 jc.testCase("Lists specialties", () => {
@@ -29,7 +29,7 @@ jc.testCase("Lists specialties", () => {
     const listedSpecialties = response.json()
     jc.expect(listedSpecialties).to.not.be.empty
 
-    const createdSpecialties = jc.variables.get("specialties")
+    const createdSpecialties = jc.variables.get("specialtiesWithIds")
     jc.expect(listedSpecialties).to.have.deep.members(createdSpecialties)
 })
 
@@ -81,6 +81,7 @@ jc.testCase("Delete specialty", () => {
 
 jc.testCase("Teardown", () => {
     jc.runTestSuite('Delete specialties')
+    jc.testSuiteVariables.clear()
 })
 
 ```

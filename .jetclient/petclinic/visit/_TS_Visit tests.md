@@ -8,7 +8,7 @@ id = '7873979f-e634-4ecd-8a97-db36ae0c958f'
 
 ```js
 function randomVisit() {
-    return _.sample(jc.variables.get("visits"))
+    return _.sample(jc.variables.get("visitsWithIds"))
 }
 
 function withVisitId(id) {
@@ -24,7 +24,7 @@ jc.testCase("Setup", async () => {
     const createdVisits = jc.runTestSuite('Create visits')
     jc.expect(createdVisits).to.not.be.empty
 
-    jc.testSuiteVariables.set("visits", createdVisits)
+    jc.testSuiteVariables.set("visitsWithIds", createdVisits)
 })
 
 jc.testCase("Lists visits", () => {
@@ -33,7 +33,7 @@ jc.testCase("Lists visits", () => {
     const listedVisits = response.json()
     jc.expect(listedVisits).to.not.be.empty
 
-    const createdVisits = jc.variables.get("visits")
+    const createdVisits = jc.variables.get("visitsWithIds")
     jc.expect(listedVisits).to.have.deep.members(createdVisits)
 })
 
@@ -95,6 +95,7 @@ jc.testCase("Teardown", () => {
     jc.runTestSuite('/petclinic/pet/Delete pets')
     jc.runTestSuite('/petclinic/owner/Delete owners')
     jc.runTestSuite('/petclinic/pettypes/Delete pet types')
+    jc.testSuiteVariables.clear()
 })
 
 ```

@@ -8,32 +8,11 @@ id = '1b1e4b89-9f97-4d1e-bee3-2a1c2adff1e2'
 
 ```json5
 {
-  vets: [
-    {
-      firstName: "James",
-      lastName: "Carter",
-    },
-    {
-      firstName: "Helen",
-      lastName: "Leary",
-    },
-    {
-      firstName: "Linda",
-      lastName: "Douglas",
-    },
-    {
-      firstName: "Rafael",
-      lastName: "Ortega",
-    },
-    {
-      firstName: "Henry",
-      lastName: "Stevens",
-    },
-    {
-      firstName: "Sharon",
-      lastName: "Harris",
-    }
-  ]
+  $vet: {
+    firstName: '{{$randomFirstName}}',
+    lastName: '{{$randomLastName}}'
+  },
+  vets: "\\{{$repeat($vet, $randomInt(10, 20))}}\\"
 }
 
 ```
@@ -60,37 +39,40 @@ function getRandomSpecialties(specialties) {
     return _.sampleSize(specialties, count)
 }
 
-const vetPromises = jc.variables.get("vets").map(vet => {
-    const randomSpecialties = getRandomSpecialties(specialties)
-    const vetWithSpecialties = {
-        ...vet,
-        specialties: randomSpecialties.map(s => _.omit(s, 'id'))
-    }
+const vetPromises = jc.variables.get("vets")
+    // Filter out vets with non-alphabetic first and last names because the API doesn't accept them
+    .filter(owner => /^[A-Za-z]+$/.test(owner.firstName) && /^[A-Za-z]+$/.test(owner.lastName))
+    .map(vet => {
+        const randomSpecialties = getRandomSpecialties(specialties)
+        const vetWithSpecialties = {
+            ...vet,
+            specialties: randomSpecialties.map(s => _.omit(s, 'id'))
+        }
 
-    return jc.sendRequestAsync("Create a Vet", withJsonBody(vetWithSpecialties))
-        .then(response => {
-            response.to.have.status(201)
-            const responseBody = response.json()
-            jc.expect(responseBody).to.have.property("id")
+        return jc.sendRequestAsync("Create a Vet", withJsonBody(vetWithSpecialties))
+            .then(response => {
+                response.to.have.status(201)
+                const responseBody = response.json()
+                jc.expect(responseBody).to.have.property("id")
 
-            const vetWithoutIds = _.omit(responseBody, 'id')
-            vetWithoutIds.specialties = responseBody.specialties.map(specialty =>
-                _.omit(specialty, 'id')
-            )
+                const vetWithoutIds = _.omit(responseBody, 'id')
+                vetWithoutIds.specialties = responseBody.specialties.map(specialty =>
+                    _.omit(specialty, 'id')
+                )
 
-            const expectedSpecialties = new Set(vetWithSpecialties.specialties.map(s => JSON.stringify(s)))
-            const actualSpecialties = new Set(vetWithoutIds.specialties.map(s => JSON.stringify(s)))
+                const expectedSpecialties = new Set(vetWithSpecialties.specialties.map(s => JSON.stringify(s)))
+                const actualSpecialties = new Set(vetWithoutIds.specialties.map(s => JSON.stringify(s)))
 
-            const isSubset = [...expectedSpecialties].every(s => actualSpecialties.has(s))
+                const isSubset = [...expectedSpecialties].every(s => actualSpecialties.has(s))
 
-            jc.expect(isSubset).to.be.true
-            return responseBody
-        })
-        .catch(error => {
-            console.error("Error creating vet:", error)
-            throw error
-        })
-})
+                jc.expect(isSubset).to.be.true
+                return responseBody
+            })
+            .catch(error => {
+                console.error("Error creating vet:", error)
+                throw error
+            })
+    })
 
 return await Promise.all(vetPromises)
 

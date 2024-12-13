@@ -8,7 +8,7 @@ id = '6a12cea9-ff58-41c6-912e-48363e331c20'
 
 ```js
 function randomOwner() {
-    return _.sample(jc.variables.get("owners"))
+    return _.sample(jc.variables.get("ownersWithIds"))
 }
 
 function withOwnerId(id) {
@@ -20,7 +20,7 @@ jc.testCase("Setup", () => {
     const createdOwners = jc.runTestSuite('Create owners')
 
     jc.expect(createdOwners).to.not.be.empty
-    jc.testSuiteVariables.set("owners", createdOwners)
+    jc.testSuiteVariables.set("ownersWithIds", createdOwners)
 })
 
 jc.testCase("Lists pet owners", () => {
@@ -29,7 +29,7 @@ jc.testCase("Lists pet owners", () => {
     const listedOwners = response.json()
     jc.expect(listedOwners).to.not.be.empty
 
-    const createdOwners = jc.variables.get("owners")
+    const createdOwners = jc.variables.get("ownersWithIds")
     jc.expect(listedOwners).to.have.deep.members(createdOwners)
 })
 
@@ -91,6 +91,7 @@ jc.testCase("Delete owner", () => {
 
 jc.testCase("Teardown", () => {
     jc.runTestSuite('Delete owners')
+    jc.testSuiteVariables.clear()
 })
 
 ```
