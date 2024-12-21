@@ -16,11 +16,11 @@ function withOwnerId(id) {
 }
 
 jc.testCase("Setup", () => {
-    jc.runTestSuite('Delete owners')
-    const createdOwners = jc.runTestSuite('Create owners')
+    jc.runScript('Delete owners')
+    const createdOwners = jc.runScript('Create owners')
 
     jc.expect(createdOwners).to.not.be.empty
-    jc.testSuiteVariables.set("ownersWithIds", createdOwners)
+    jc.scriptVariables.set("ownersWithIds", createdOwners)
 })
 
 jc.testCase("Lists pet owners", () => {
@@ -90,8 +90,8 @@ jc.testCase("Delete owner", () => {
 })
 
 jc.testCase("Teardown", () => {
-    jc.runTestSuite('Delete owners')
-    jc.testSuiteVariables.clear()
+    jc.runScript('Delete owners')
+    jc.scriptVariables.clear()
 })
 
 ```

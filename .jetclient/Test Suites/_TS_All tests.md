@@ -23,29 +23,29 @@ id = '0c3acb3d-c708-4cf5-ab93-2f86da2eb43f'
 #### Script
 
 ```js
-jc.runTestSuite('Delete all data')
+jc.runScript('Delete all data')
 
 const testSuitesToRun = jc.variables.get('testSuitesToRun')
 
 if (testSuitesToRun.owner) {
-    jc.runTestSuite('/petclinic/owner/Owner tests')
+    jc.runScript('/petclinic/owner/Owner tests')
 }
 if (testSuitesToRun.pet) {
-    jc.runTestSuite('/petclinic/pet/Pet tests')
+    jc.runScript('/petclinic/pet/Pet tests')
 }
 if (testSuitesToRun.visit) {
-    jc.runTestSuite('/petclinic/visit/Visit tests')
+    jc.runScript('/petclinic/visit/Visit tests')
 }
 if (testSuitesToRun.pettype) {
-    jc.runTestSuite('/petclinic/pettypes/Pet type tests')
+    jc.runScript('/petclinic/pettypes/Pet type tests')
 }
 if (testSuitesToRun.specialty) {
-    jc.runTestSuite('/petclinic/specialty/Specialty tests')
+    jc.runScript('/petclinic/specialty/Specialty tests')
 }
 if (testSuitesToRun.vet) {
-    jc.runTestSuite('/petclinic/vet/Vet tests')
+    jc.runScript('/petclinic/vet/Vet tests')
 }
 if (testSuitesToRun.user) {
-    jc.runTestSuite('/petclinic/user/User Tests')
+    jc.runScript('/petclinic/user/User Tests')
 }
 ```

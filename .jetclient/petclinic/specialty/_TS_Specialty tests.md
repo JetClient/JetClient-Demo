@@ -16,11 +16,11 @@ function withId(id) {
 }
 
 jc.testCase("Setup", () => {
-    jc.runTestSuite('Delete specialties')
-    const createdSpecialties = jc.runTestSuite('Create specialties')
+    jc.runScript('Delete specialties')
+    const createdSpecialties = jc.runScript('Create specialties')
 
     jc.expect(createdSpecialties).to.not.be.empty
-    jc.testSuiteVariables.set("specialtiesWithIds", createdSpecialties)
+    jc.scriptVariables.set("specialtiesWithIds", createdSpecialties)
 })
 
 jc.testCase("Lists specialties", () => {
@@ -80,8 +80,8 @@ jc.testCase("Delete specialty", () => {
 })
 
 jc.testCase("Teardown", () => {
-    jc.runTestSuite('Delete specialties')
-    jc.testSuiteVariables.clear()
+    jc.runScript('Delete specialties')
+    jc.scriptVariables.clear()
 })
 
 ```

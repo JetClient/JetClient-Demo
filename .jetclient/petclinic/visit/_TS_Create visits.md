@@ -30,7 +30,7 @@ function getExistingPets() {
     return null
 }
 
-const pets = getExistingPets() || jc.runTestSuite('/petclinic/pet/Create pets')
+const pets = getExistingPets() || jc.runScript('/petclinic/pet/Create pets')
 jc.expect(pets).to.not.be.empty
 
 const visitPromises = jc.variables.get("visits").map(visit => {

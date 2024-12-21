@@ -31,7 +31,7 @@ function getExistingSpecialties() {
     return null
 }
 
-const specialties = getExistingSpecialties() || jc.runTestSuite('/petclinic/specialty/Create specialties')
+const specialties = getExistingSpecialties() || jc.runScript('/petclinic/specialty/Create specialties')
 jc.expect(specialties).to.not.be.empty
 
 function getRandomSpecialties(specialties) {

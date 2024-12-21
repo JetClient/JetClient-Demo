@@ -16,11 +16,11 @@ function withPetTypeId(id) {
 }
 
 jc.testCase("Setup", () => {
-    jc.runTestSuite('Delete pet types')
-    const createdPetTypes = jc.runTestSuite('Create pet types')
+    jc.runScript('Delete pet types')
+    const createdPetTypes = jc.runScript('Create pet types')
 
     jc.expect(createdPetTypes).to.not.be.empty
-    jc.testSuiteVariables.set("petTypesWithIds", createdPetTypes)
+    jc.scriptVariables.set("petTypesWithIds", createdPetTypes)
 })
 
 jc.testCase("Lists pet types", () => {
@@ -81,8 +81,8 @@ jc.testCase("Delete pet type", () => {
 })
 
 jc.testCase("Teardown", () => {
-    jc.runTestSuite('Delete pet types')
-    jc.testSuiteVariables.clear()
+    jc.runScript('Delete pet types')
+    jc.scriptVariables.clear()
 })
 
 ```

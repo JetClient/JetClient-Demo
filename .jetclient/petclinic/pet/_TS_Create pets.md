@@ -41,10 +41,10 @@ function getExistingPetTypes() {
     return null
 }
 
-const owners = getExistingOwners() || jc.runTestSuite('/petclinic/owner/Create owners')
+const owners = getExistingOwners() || jc.runScript('/petclinic/owner/Create owners')
 jc.expect(owners).to.not.be.empty
 
-const petTypes = getExistingPetTypes() || jc.runTestSuite('/petclinic/pettypes/Create pet types')
+const petTypes = getExistingPetTypes() || jc.runScript('/petclinic/pettypes/Create pet types')
 jc.expect(petTypes).to.not.be.empty
 
 const randomOwnerId = () => _.sample(owners).id

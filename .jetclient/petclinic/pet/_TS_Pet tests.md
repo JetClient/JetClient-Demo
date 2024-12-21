@@ -16,13 +16,13 @@ function withPetId(id) {
 }
 
 jc.testCase("Setup", () => {
-    jc.runTestSuite('Delete pets')
-    jc.runTestSuite('/petclinic/owner/Delete owners')
-    jc.runTestSuite('/petclinic/pettypes/Delete pet types')
-    const createdPets = jc.runTestSuite('Create pets')
+    jc.runScript('Delete pets')
+    jc.runScript('/petclinic/owner/Delete owners')
+    jc.runScript('/petclinic/pettypes/Delete pet types')
+    const createdPets = jc.runScript('Create pets')
 
     jc.expect(createdPets).to.not.be.empty
-    jc.testSuiteVariables.set("petsWithIds", createdPets)
+    jc.scriptVariables.set("petsWithIds", createdPets)
 })
 
 jc.testCase("Create pet error", () => {
@@ -80,9 +80,9 @@ jc.testCase("Delete pet", () => {
 })
 
 jc.testCase("Teardown", () => {
-    jc.runTestSuite('Delete pets')
-    jc.runTestSuite('/petclinic/owner/Delete owners')
-    jc.runTestSuite('/petclinic/pettypes/Delete pet types')
-    jc.testSuiteVariables.clear()
+    jc.runScript('Delete pets')
+    jc.runScript('/petclinic/owner/Delete owners')
+    jc.runScript('/petclinic/pettypes/Delete pet types')
+    jc.scriptVariables.clear()
 })
 ```
